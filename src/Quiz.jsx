@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase"; // Import Firebase configuration
 import { collection, addDoc } from "firebase/firestore";
+import { LampContainer, LampDemo } from "./components/ui/lamp";
+import { motion } from "framer-motion";
 
 const Quiz = ({ username }) => {
   const [questions, setQuestions] = useState([]);
@@ -32,26 +34,22 @@ const Quiz = ({ username }) => {
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = answer === currentQuestion.correctAnswer;
 
-    // Update the user's answers
     setUserAnswers((prev) => ({
       ...prev,
       [currentQuestionIndex]: { answer, isCorrect },
     }));
 
-    // Track correct and incorrect answers
     if (isCorrect) {
       setCorrectCount((prev) => prev + 1);
     } else {
       setIncorrectCount((prev) => prev + 1);
     }
 
-    // Track which questions were answered correctly or incorrectly
     setAnsweredQuestions((prev) => [
       ...prev,
       { question: currentQuestion.question, isCorrect, answer, correctAnswer: currentQuestion.correctAnswer },
     ]);
 
-    // Move to next question or finish the quiz
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
@@ -59,7 +57,6 @@ const Quiz = ({ username }) => {
     }
   };
 
-  // Save quiz results to Firebase
   const saveResults = async () => {
     try {
       const results = {
@@ -93,7 +90,6 @@ const Quiz = ({ username }) => {
         <p>Correct Answers: {correctCount}</p>
         <p>Incorrect Answers: {incorrectCount}</p>
 
-        {/* Display answered questions with feedback */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold">Your Results:</h3>
           <ul className="mt-4 space-y-4">
@@ -125,24 +121,37 @@ const Quiz = ({ username }) => {
 
   return (
     <div className="quiz-container p-6">
-      <h2 className="text-xl font-bold">
-        Question {currentQuestionIndex + 1}/{questions.length}
-      </h2>
-      <p className="my-4">{currentQuestion.question}</p>
-      <ul className="space-y-2">
-        {currentQuestion.incorrectAnswers
-          .concat(currentQuestion.correctAnswer)
-          .sort()
-          .map((answer) => (
-            <li
-              key={answer}
-              className="p-2 border rounded cursor-pointer hover:bg-blue-100"
-              onClick={() => handleAnswerSelect(answer)}
-            >
-              {answer}
-            </li>
-          ))}
-      </ul>
+      <LampContainer>
+        <motion.h1
+          initial={{ opacity: 0.5, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="mt-8 w-1/2 mb-9 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-7xl">
+          {currentQuestion.question}
+        </motion.h1>
+        <h2 className="my-2 font-bold bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text">
+          Question {currentQuestionIndex + 1}/{questions.length}
+        </h2>
+        {/* <p className="my-4 font-bold text-lg">{currentQuestion.question}</p> */}
+        <ul className="space-y-2 w-full">
+          {currentQuestion.incorrectAnswers
+            .concat(currentQuestion.correctAnswer)
+            .sort()
+            .map((answer) => (
+              <li
+                key={answer}
+                className="p-2 border rounded cursor-pointer hover:bg-blue-100"
+                onClick={() => handleAnswerSelect(answer)}
+              >
+                {answer}
+              </li>
+            ))}
+        </ul>
+      </LampContainer>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Quiz from "./Quiz.jsx";
+import { LampDemo } from "./components/ui/lamp.jsx";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -23,7 +24,6 @@ function App() {
           <li>Pricing</li>
         </ul>
       </nav>
-
       {/* Main Content */}
       {!isQuizStarted ? (
         <div className="flex flex-col items-center justify-center mt-10">
