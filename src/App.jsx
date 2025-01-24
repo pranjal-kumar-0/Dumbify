@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import LeaderBoard from './Leaderboard/leaderBoard'
+
 // import { useState } from 'react';
 // import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 // import Pricing from './Pricing';
@@ -119,6 +122,19 @@ function App() {
   };
 
   return (
+    <>
+      <LeaderBoard/>
+      {/* <nav className='flex w-full items-center justify-between max-w-7xl mx-auto p-4'>
+        <h1 className='text-2xl font-bold'>Dumbify</h1>
+        <ul className='flex gap-4'>
+          <li>Leaderboard</li>
+          <li>Pricing</li>
+        </ul>
+      </nav>
+      <main></main> */}
+    </>
+  )
+
     <Router>
       {/* Navbar */}
       <nav className="flex w-full items-center justify-between max-w-7xl mx-auto p-4">
