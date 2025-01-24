@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Quiz from "./Quiz.jsx";
-import { LampDemo } from "./components/ui/lamp.jsx";
 
 function App() {
   const [username, setUsername] = useState("");
