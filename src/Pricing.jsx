@@ -6,7 +6,7 @@ function Pricing({ planTitle, price, description, buttonText }) {
       <h3 className="plan-title">{planTitle}</h3>
       <p className="price">{price}</p>
       <p className="description">{description}</p>
-      <button className="checkout-button">{buttonText}</button>
+      <button className="checkout-button z-10">{buttonText}</button>
     </div>
   );
 }

@@ -29,6 +29,9 @@ function App() {
             <Link to="/leaderboard">Leaderboard</Link>
           </li>
           <li className='z-10'>
+            <Link to="/quiz">Quiz</Link>
+          </li>
+          <li className='z-10'>
             <Link to="/pricing">Pricing</Link>
           </li>
         </ul>
@@ -39,7 +42,7 @@ function App() {
         <Route
           path="/pricing"
           element={
-            <div className="Pricing-Container">
+            <div className="Pricing-Container z-10">
               <Pricing
                 planTitle="Broke Plan"
                 price="20🪙"
@@ -82,9 +85,8 @@ function App() {
                   />
                   <button
                     onClick={startQuiz}
-                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                    className="bg-blue-500 text-white px-8 py-4 rounded"
                   >
-                    Start Quiz
                   </button>
                 </>
               ) : (

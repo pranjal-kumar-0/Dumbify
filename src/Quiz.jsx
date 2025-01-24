@@ -153,7 +153,7 @@ const Quiz = ({ username }) => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="mt-8 w-1/2 mb-9 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-7xl">
+          className="mt-8 w-1/2 mb-9 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-xl font-medium tracking-tight text-transparent md:text-7xl">
           {currentQuestion.question}
         </motion.h1>
         <h2 className="my-2 font-bold bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text">
@@ -173,14 +173,14 @@ const Quiz = ({ username }) => {
               </li>
             ))}
         </ul>
-
-        {/* Display the GIF after selecting an answer */}
-        {gifPath && (
-          <div className="mt-6">
-            <img src={gifPath} alt="Answer Result" className="w-48 h-48 mx-auto" />
-          </div>
-        )}
       </LampContainer>
+
+      {/* Display the GIF after selecting an answer */}
+      {gifPath && (
+        <div className="absolute mt-6 top-10 left-10">
+          <img src={gifPath} alt="Answer Result" className="w-48 h-48 mx-auto" />
+        </div>
+      )}
     </div>
   );
 };
