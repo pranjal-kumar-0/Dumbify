@@ -171,7 +171,7 @@ const Quiz = ({ username }) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="quiz-container p-6">
+    <div className=" p-6 w-full">
       <Timer/>
       <LampContainer>
         <motion.h1
