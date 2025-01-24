@@ -3,6 +3,7 @@ import { db } from "./firebase"; // Import Firebase configuration
 import { collection, getDoc, setDoc, getDocs, query, where, updateDoc, doc } from "firebase/firestore";
 import { LampContainer, LampDemo } from "./components/ui/lamp";
 import { motion } from "framer-motion";
+import Timer from "./Timer/Timer";
 
 const Quiz = ({ username }) => {
   const [questions, setQuestions] = useState([]);
@@ -12,6 +13,7 @@ const Quiz = ({ username }) => {
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  const [time, setTime] = useState("5")
 
   // Fetch questions from The Trivia API
   useEffect(() => {
@@ -170,6 +172,7 @@ const Quiz = ({ username }) => {
 
   return (
     <div className="quiz-container p-6">
+      <Timer/>
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 50 }}
@@ -200,6 +203,7 @@ const Quiz = ({ username }) => {
             ))}
         </ul>
       </LampContainer>
+
     </div>
   );
 };
