@@ -12,8 +12,6 @@ function App() {
         <ul>
           <li>Pricing</li>
           <li>Leaderboard</li>
-          <li>Signin</li>
-          <li>Signup</li>
         </ul>
       </nav>
       <main></main>
