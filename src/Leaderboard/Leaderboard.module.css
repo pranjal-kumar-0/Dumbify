@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* *{
+    justify-items: center;
+} */
+
+.leaderboard-container {
+    font-family: "Poppins", serif;
+    display: flex;
+    flex-direction: row;
+    gap: 1em; /* Space between each row */
+    width: 100%;
+    padding: 2% 0;
+    align-items: center;
+}
+
+.leaderboard-row {
+    display: flex;
+    justify-content: space-between; /* Spread items evenly across the row */
+    align-items: center;
+    background-color: #333;
+    color: white;
+    width: 80%; /* Adjust width to fit content */
+    padding: 1em;
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    border-radius: 20;
+    margin: 5%;
+}
+
+.leaderboard-Header {
+    display: flex;
+    justify-content: space-between; /* Spread items evenly across the row */
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
+    width: 80%; /* Adjust width to fit content */
+    padding-top: 0%;
+    border-radius: 10px; /* Rounded corners for a modern look */
+    border-radius: 20;
+    margin: 5%;
+}
+
+.name, .score, .rank {
+    flex: 1;
+    text-align: center; /* Center text within each column */
+}
+
+.name {
+    text-align: left; /* Align name to the left */
+}
+
+.score {
+    text-align: center; /* Keep score centered */
+}
+
+.rank {
+    text-align: right; /* Align rank to the right */
+}
