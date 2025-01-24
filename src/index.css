@@ -7,7 +7,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #020618;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,15 +27,20 @@ ul li {
 .pricing-card {
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: calc(100% / 4 - 40px); /* Dynamic width for four cards per row with gap adjustment */
-  max-width: 250px; /* Maximum width for each card */
-  min-width: 200px; /* Minimum width for each card */
+  width: calc(100% / 4 - 40px);
+  /* Dynamic width for four cards per row with gap adjustment */
+  max-width: 250px;
+  /* Maximum width for each card */
+  min-width: 200px;
+  /* Minimum width for each card */
   padding: 20px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  margin: 10px; /* Fallback spacing */
-  flex-grow: 1; /* Allows the cards to grow to fill the container */
+  margin: 10px;
+  /* Fallback spacing */
+  flex-grow: 1;
+  /* Allows the cards to grow to fill the container */
 }
 
 .plan-title {
@@ -58,21 +63,25 @@ ul li {
   line-height: 1.4;
 }
 
-.checkout-button{
+.checkout-button {
   background-color: #003cff;
   padding: 15px 50px;
   margin: 20px;
   cursor: pointer;
 
 }
-.checkout-button:hover{
+
+.checkout-button:hover {
   background-color: #0b2ea0;
 }
 
-.Pricing-Container{
+.Pricing-Container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centers items horizontally */
-  gap: 20px; /* Adds consistent spacing between cards */
-  padding: 20px; /* Adds padding around the container */
+  justify-content: center;
+  /* Centers items horizontally */
+  gap: 20px;
+  /* Adds consistent spacing between cards */
+  padding: 20px;
+  /* Adds padding around the container */
 }

@@ -169,7 +169,7 @@ const Quiz = ({ username }) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="quiz-container p-6">
+    <div className=" p-6 w-full">
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 50 }}
