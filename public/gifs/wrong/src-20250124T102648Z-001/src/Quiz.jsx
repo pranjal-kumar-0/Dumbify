@@ -3,6 +3,7 @@ import { db } from "./firebase"; // Import Firebase configuration
 import { collection, getDoc, setDoc, getDocs, query, where, updateDoc, doc } from "firebase/firestore";
 import { LampContainer, LampDemo } from "./components/ui/lamp";
 import { motion } from "framer-motion";
+import Timer from "./Timer/Timer";
 
 const Quiz = ({ username }) => {
   const [questions, setQuestions] = useState([]);
@@ -12,7 +13,7 @@ const Quiz = ({ username }) => {
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
-  const [gifPath, setGifPath] = useState(""); // State for the GIF path
+  const [time, setTime] = useState("5")
 
   // Fetch questions from The Trivia API
   useEffect(() => {
@@ -34,14 +35,6 @@ const Quiz = ({ username }) => {
   const handleAnswerSelect = (answer) => {
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = answer === currentQuestion.correctAnswer;
-    const num = Math.floor(Math.random() * 4) + 1;
-
-    // Set the GIF path based on whether the answer is correct or not
-    const gif = isCorrect
-      ? `/gifs/correct/${num}.gif` // Correct answer GIF path
-      : `/gifs/wrong/${num}.gif`; // Incorrect answer GIF path
-
-    setGifPath(gif);
 
     setUserAnswers((prev) => ({
       ...prev,
@@ -65,7 +58,6 @@ const Quiz = ({ username }) => {
       setIsQuizCompleted(true);
     }
   };
-
   const saveResults = async () => {
     try {
       // Get a reference to the user's document
@@ -96,6 +88,42 @@ const Quiz = ({ username }) => {
       console.error("Error saving or updating quiz results:", error);
     }
   };
+  // const saveResults = async () => {
+  //   try {
+  //     // Check if the username already exists in the Firestore collection
+  //     const quizResultsRef = collection(db, "quiz_results");
+  //     const q = query(quizResultsRef, where("username", "==", username));
+  //     const querySnapshot = await getDocs(q);
+
+  //     if (!querySnapshot.empty) {
+  //       // If user already exists, update the document
+  //       const docId = querySnapshot.docs[0].id;
+  //       const docRef = doc(db, "quiz_results", docId);
+
+  //       await updateDoc(docRef, {
+  //         correctCount,
+  //         incorrectCount,
+  //         answeredQuestions,
+  //         timestamp: new Date(),
+  //       });
+  //       console.log("Quiz results updated for username:", username);
+  //     } else {
+  //       // If user doesn't exist, add a new document
+  //       const results = {
+  //         username,
+  //         correctCount,
+  //         incorrectCount,
+  //         answeredQuestions,
+  //         timestamp: new Date(),
+  //       };
+
+  //       const docRef = await addDoc(collection(db, "quiz_results"), results);
+  //       console.log("Quiz results saved with ID:", docRef.id);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error saving quiz results:", error);
+  //   }
+  // };
 
   useEffect(() => {
     if (isQuizCompleted) saveResults();
@@ -143,7 +171,8 @@ const Quiz = ({ username }) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="quiz-container p-6">
+    <div className=" p-6 w-full">
+      <Timer/>
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 50 }}
@@ -173,14 +202,8 @@ const Quiz = ({ username }) => {
               </li>
             ))}
         </ul>
-
-        {/* Display the GIF after selecting an answer */}
-        {gifPath && (
-          <div className="mt-6">
-            <img src={gifPath} alt="Answer Result" className="w-48 h-48 mx-auto" />
-          </div>
-        )}
       </LampContainer>
+
     </div>
   );
 };
